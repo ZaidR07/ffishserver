@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cors from "cors";
 import ConnectDB from "../src/db.js";
-// import approuter from "../src/router.js";
+import approuter from "../src/router.js";
 import path from "path";
 import cookieParser from "cookie-parser";
 
@@ -37,7 +37,7 @@ app.use(async (req, res, next) => {
     }
 });
 
-// app.use(approuter);
+app.use(approuter);
 
 // Export for Vercel
 export default app;
