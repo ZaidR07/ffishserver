@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const DB_URL = process.env.DB || "mongodb+srv://ashtauser:passashta@ashtacluster.oohyu2a.mongodb.net/ashtafb";
+const DB_URL = process.env.DB || "mongodb+srv://trexuser:trexpassword@trextesting.ixnokth.mongodb.net/ffish";
 
 let isConnected = false; // Track MongoDB connection status
 
