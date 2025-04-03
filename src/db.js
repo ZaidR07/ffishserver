@@ -1,23 +1,30 @@
-
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 dotenv.config();
 
+const DB_URL = process.env.DB || "mongodb+srv://ashtauser:passashta@ashtacluster.oohyu2a.mongodb.net/ashtafb";
 
-const DB_URL = process.env.DB || "mongodb+srv://trexuser:trexpassword@trextesting.ixnokth.mongodb.net/ffish";
-
-
-
+let isConnected = false; // Track MongoDB connection status
 
 const ConnectDB = async () => {
-    try {
-        const connectionInstance = await mongoose.connect(DB_URL);
-        console.log(`Connected to MongoDB: ${connectionInstance.connection.host}`);
-    } catch (error) {
-        console.error("MongoDB connection FAILED", error);
-        process.exit(1);
+    if (isConnected) {
+        console.log("[MongoDB] Using existing database connection");
+        return;
     }
-}
+
+    try {
+        const connectionInstance = await mongoose.connect(DB_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+
+        isConnected = connectionInstance.connections[0].readyState;
+        console.log(`[MongoDB] Connected successfully to: ${connectionInstance.connection.host}`);
+    } catch (error) {
+        console.error("[MongoDB] Connection FAILED:", error);
+        throw new Error("Database connection failed");
+    }
+};
 
 export default ConnectDB;
