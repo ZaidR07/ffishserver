@@ -36,8 +36,6 @@ export const getproducts = async (req, res) => {
   try {
     console.log("[getproducts] Request received"); // Log request start
 
-    await ConnectDB();
-    // Check MongoDB connection
     const db = mongoose.connection.db;
     if (!db) {
       console.error("[getproducts] Database connection not found");
