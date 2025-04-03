@@ -29,11 +29,15 @@ export const UpdateAbout = async (req, res) => {
 };
 
 
+
+
 export const GetAbout = async (req, res) => {
     try {
         // if (!mongoose.connection.readyState) {
         //     return res.status(500).json({ message: "Database not connected" });
         // }
+
+        console.log("[getabout] Request received"); // Log request start
 
         const db = mongoose.connection.db;
         const aboutCollection = db.collection("about");
