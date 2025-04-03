@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 export const UpdateAbout = async (req, res) => {
     try {
-        if (!mongoose.connection.readyState) {
-            return res.status(500).json({ message: "Database not connected" });
-        }
+        // if (!mongoose.connection.readyState) {
+        //     return res.status(500).json({ message: "Database not connected" });
+        // }
 
         const db = mongoose.connection.db;
         const { about } = req.body;
@@ -31,9 +31,9 @@ export const UpdateAbout = async (req, res) => {
 
 export const GetAbout = async (req, res) => {
     try {
-        if (!mongoose.connection.readyState) {
-            return res.status(500).json({ message: "Database not connected" });
-        }
+        // if (!mongoose.connection.readyState) {
+        //     return res.status(500).json({ message: "Database not connected" });
+        // }
 
         const db = mongoose.connection.db;
         const aboutCollection = db.collection("about");
