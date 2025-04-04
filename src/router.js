@@ -4,7 +4,7 @@ import uploadMiddleware, { singleupload } from "./middlewares/upload.js";
 import { addCarouselImages, deletecarouselimage, getcarouselimages } from "./controllers/carousel.js";
 import { addGalleryImages, deletegalleryimage, getgalleryimages } from "./controllers/gallery.js";
 import { addproduct, getproducts} from "./controllers/product.js";
-import { addopd, deleteopdslot, getopds } from "./controllers/opd.js";
+import { adduser, deleteopdslot, getopds, sendotp, verifyotp } from "./controllers/user.js";
 import { AddService, getServices } from "./controllers/services.js";
 import { addReview, getReviews } from "./controllers/reviews.js";
 import { GetAbout, UpdateAbout } from "./controllers/general.js";
@@ -32,9 +32,10 @@ approuter.get("/api/getgalleryimages", getgalleryimages);
 approuter.post("/api/addproduct", singleupload , addproduct);
 approuter.get("/api/getproducts",getproducts);
 
-// OPD Routes
-approuter.post("/api/addopd", addopd);
-approuter.get("/api/getopd", getopds);
+// User Routes
+approuter.post("/api/adduser", adduser);
+approuter.post("/api/sendotp" , sendotp);
+approuter.post("/api/verifyotp", verifyotp);
 approuter.post("/api/deleteslot", deleteopdslot);
 
 
