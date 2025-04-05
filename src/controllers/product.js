@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import ConnectDB from "../db.js";
+
 
 export const addproduct = async (req, res) => {
   try {

@@ -9,6 +9,7 @@ import { AddService, getServices } from "./controllers/services.js";
 import { addReview, getReviews } from "./controllers/reviews.js";
 import { GetAbout, UpdateAbout } from "./controllers/general.js";
 import { getDashboardNumbers } from "./controllers/dashboard.js";
+import { addquery } from "./controllers/contact.js";
 
 const approuter = Router();
 
@@ -52,6 +53,11 @@ approuter.get("/api/getreviews", getReviews);
 //About Routes
 approuter.post("/api/updateabout", UpdateAbout);
 approuter.get("/api/getabout",GetAbout);
+
+
+//Query Routes
+approuter.post("/api/addquery", addquery);
+
 
 export default approuter;
 
