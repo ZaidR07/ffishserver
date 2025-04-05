@@ -44,3 +44,28 @@ export const addquery = async (req, res) => {
       .json({ message: "Internal Server Error. Please try again later." });
   }
 };
+
+export const getqueries = async (req, res) => {
+  try {
+    const db = mongoose.connection.db;
+
+    const queries = await db.collection("queries").find({}).toArray();
+
+    if (queries.length < 0) {
+      return res.status(404).json({
+        message: "No queries Found",
+      });
+    }
+
+    return res.status(200).json({
+      data: queries,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
+
+
+

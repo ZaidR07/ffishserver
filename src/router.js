@@ -9,8 +9,8 @@ import { AddService, getServices } from "./controllers/services.js";
 import { addReview, getReviews } from "./controllers/reviews.js";
 import { GetAbout, UpdateAbout } from "./controllers/general.js";
 import { getDashboardNumbers } from "./controllers/dashboard.js";
-import { addquery } from "./controllers/contact.js";
-import { neworder } from "./controllers/order.js";
+import { addquery, getqueries } from "./controllers/contact.js";
+import { getorders, neworder } from "./controllers/order.js";
 
 const approuter = Router();
 
@@ -58,10 +58,12 @@ approuter.get("/api/getabout",GetAbout);
 
 //Query Routes
 approuter.post("/api/addquery", addquery);
+approuter.get("/api/getqueries", getqueries);
 
 
 //Order Routes
 approuter.post("/api/neworder", neworder);
+approuter.get("/api/getorders",getorders);
 
 
 export default approuter;
